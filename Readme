@@ -1,0 +1,212 @@
+# InternationalB2BVentures
+
+## Brief Description
+
+This web-based project connects diverse business ventures in a unified platform. This repo contains the backend logic of the whole system which is built with Django.
+
+## Table of Contents
+
+-   [Tech Stack](#technology-stack)
+-   [Prerequisites and Dependencies](#prerequisites-and-dependencies)
+-   [Getting Started](#getting-started)
+-   [Running the Project](#running-the-project)
+-   [Deployment](#deployment)
+-   [Branching](#branching)
+-   [Following Up](#following-up)
+
+----------
+
+## Tech Stack
+
+The following technologies are used to build this application:
+
+-   **Programming Language**: Python 3.12+
+-   **Backend Framework**: Django 5.1+
+-   **Database**: Default is SQLite3, which is automatically created if no other database is configured. You can also use relational databases like PostgreSQL or MySQL.
+
+## Prerequisites and Dependencies
+
+### Required Tools:
+
+-   **Python 3.12+**: Ensure you have the required Python version installed. Check it by running:
+    
+    ```bash
+    python --version
+    
+    ```
+    
+
+### Installing Dependencies:
+
+-   All required libraries are listed in the `requirements.txt` file and will be installed during setup.
+
+## Getting Started
+
+Follow these steps to set up the development environment:
+
+### Clone the Repository
+
+Download the project’s codebase:
+
+```bash
+git clone https://github.com/yazeedhasan97/InternationalB2BVentures.git
+
+```
+
+### Set Up the Environment
+
+1.  **Create a Virtual Environment**:
+    
+    ```bash
+    python -m venv venv
+    
+    ```
+    
+2.  **Activate the Virtual Environment**:
+    
+    ```bash
+    source venv/Scripts/activate
+    
+    ```
+    
+3.  **Install Dependencies**:
+    
+    ```bash
+    pip install -r requirements.txt
+    
+    ```
+    
+
+## Running the Project
+This section explains how to launch the development server and access your application locally.
+
+### Database Migrations
+There are 2 ways to migrate the database, first is the default Django way and second is using the custom management command.
+
+1.  **Default Django Way**:
+    
+    -   Generate migration files:
+        
+        ```bash
+        python manage.py makemigrations
+        
+        ```
+        
+    -   Apply migrations:
+        
+        ```bash
+        python manage.py migrate
+        
+        ```
+        
+2.  **Custom Management Command (Recommended)**:
+    
+    -   Run all migrations, migrate it database populate system data and some sample data using the following custom management command:
+        
+        ```bash
+        python manage.py runmigration --populate=True
+        
+        ```
+        
+    -   This command creates a superuser (username: `admin`, password: `adminpw`). Use this command with --populate=True argument, specially if you are running the project for the very first time.
+        
+    -   To only apply migrations without populating data:
+        
+        ```bash
+        python manage.py runmigration
+        
+        ```
+        
+
+### Notes:
+
+-   Reset the database to an empty state:
+    
+    ```bash
+    python manage.py flush
+    
+    ```
+    
+-   **Configuring Other Databases**: SQLite3 is the default database, but you can configure a different relational database (e.g., PostgreSQL, MySQL) by updating the `env.json` file under `InternationalB2BVentures/settings` under the "local" setting.
+
+#### PostgreSQL Configuration:
+
+```json
+"DATABASES": {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "Your_DB_Name",
+        "USER": "Your_DB_Username",
+        "PASSWORD": "Your_DB_Password",
+        "HOST": "127.0.0.1",
+        "PORT": 5432
+    }
+}
+
+```
+
+#### MySQL Configuration:
+
+```json
+"DATABASES": {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "Your_DB_Name",
+        "USER": "Your_DB_Username",
+        "PASSWORD": "Your_DB_Password",
+        "HOST": "localhost",
+        "PORT": 3306
+    }
+}
+
+```
+
+For further details on MySQL integration, refer to [this blog](https://www.geeksforgeeks.org/how-to-integrate-mysql-database-with-django/).
+
+### Create a Superuser
+
+To create another superuser, run:
+
+```bash
+python manage.py createsuperuser
+
+```
+
+### Start the Development Server
+
+Launch the built-in Django server:
+
+```bash
+python manage.py runserver
+
+```
+
+Access the application locally:
+
+-   Main site: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+-   Admin login: [http://127.0.0.1:8000/admin/login/](http://127.0.0.1:8000/admin/login/)
+- Access the api urls using swagger: [http://127.0.0.1:8000/api/swagger/](http://127.0.0.1:8000/api/swagger/)
+
+----------
+
+## Deployment
+
+The application can be deployed on platforms like AWS, Azure, Heroku, PythonAnywhere, or any VPS supporting Python. Deployment steps may vary based on the platform.
+
+## Branching
+
+This repository follows a common branching strategy:
+
+1.  **Master Branch**:
+    -   Stable deployment branch.
+2.  **Development Branch**:
+    -   Active development branch with the latest updates.
+3.  **Feature Branches**:
+    -   Used for developing specific features and merged into the development branch upon completion.
+
+## Following Up
+
+After cloning the repository, follow these tips to stay updated:
+
+-   Pull updates from the `development` branch regularly.
+-   Review commit messages carefully to ensure the smooth operation of your local branch.

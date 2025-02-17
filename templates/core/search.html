@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block links %} 
+<li><a class="font-xs color-gray-500" href="">Search</a></li>
+{% endblock %}
+    
+{% block main %}
+
+<!-- Top  -->
+<section class="section-box shop-template">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 order-last order-lg-first">
+                <div class="sidebar-border mb-0">
+                    <div class="sidebar-head">
+                        <h6 class="color-gray-900">Vendor Categories</h6>
+                    </div>
+                    <div class="sidebar-content">
+                        <ul class="list-nav-arrow">
+                            {% for cat in categories %}
+                            <li>
+                                <a href="/search/?query={{cat.name}}">{{cat}}
+                                    <span class="number">{{cat.vendor_set.count}}</span>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="box-slider-item mt-3">
+                    <div class="head pb-15 border-brand-2">
+                        <h5 class="color-gray-900">By Tags</h5>
+                    </div>
+                    <div class="content-slider mb-50">
+                        {% for tag in tags %}
+                        <a class="btn btn-border mr-5" href="/">{{tag}}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="col-sm-12 col-md-9 right">
+                <div class="box-wishlist">
+                    <div class="head-wishlist">
+                        <div class="item-wishlist">
+                            <div class="wishlist-cb">
+                                <input class="cb-layout cb-all" type="checkbox">
+                            </div>
+                            <div class="wishlist-product"><span class="font-md-bold color-brand-3">Vendor</span></div>
+                            <div class="wishlist-price"><span class="font-md-bold color-brand-3">Category</span></div>
+                            <div class="wishlist-price"><span class="font-md-bold color-brand-3"></span></div>
+                            <div class="wishlist-action"><span class="font-md-bold color-brand-3">Action</span></div>
+                        </div>
+                    </div>
+                    <div class="content-wishlist">
+                        {% for vendor in vendors %}
+                        <div class="item-wishlist">
+                            <div class="wishlist-cb">
+                                <input class="cb-layout cb-select" type="checkbox">
+                            </div>
+                            <div class="wishlist-product">
+                                <div class="product-wishlist">
+                                    <div class="product-image search-item">
+                                        <a href="/"><img class="h-100 w-100" src="{{vendor.logo.url}}" alt="Ibbv"></a>
+                                    </div>
+
+                                    <div class="product-info">
+                                        <a href="/">
+                                            <h6 class="color-brand-3">{{vendor.name}}</h6>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wishlist-status">
+                                <span class="btn btn-gray font-md-bold color-brand-3">{{vendor.category}}</span>
+                            </div>
+                            <div class="wishlist-status">
+                            </div>
+                            
+
+                            <div class="wishlist-action">
+                                <a class="btn btn-cart font-sm-bold" href="/">View Detail</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+</section>
+
+{% endblock %}

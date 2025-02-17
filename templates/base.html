@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="msapplication-TileColor" content="#0E0E0E">
+  <meta name="template-color" content="#0E0E0E">
+  <meta name="description" content="Index page">
+  <meta name="keywords" content="index, page">
+  <meta name="author" content="">
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'imgs/template/favicon.svg' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <style>
+    .error_list {
+      color: #ff7588;
+    }
+
+    .rc-anchor-center-item {
+      display: table-cell;
+      vertical-align: top;
+      margin-top: 10px;
+      padding-top: 10px;
+    }
+
+    .rc-anchor-normal {
+      height: 74px;
+      width: 300px;
+      max-height: 47px;
+    }
+
+    option {
+      color: white;
+    }
+  </style>
+
+  <link href="{% static 'css/style.css' %}?v=3.0.0" rel="stylesheet">
+  {% block style %} {% endblock %}
+  <title>{% block title %}IB2BV{% endblock %}</title>
+</head>
+
+<body>
+  {% block preloader %}
+  <div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+      <div class="preloader-inner position-relative">
+        <div class="text-center">
+          <img class="mb-10" src="{% static 'imgs/logo.jpg' %}" alt="IB2BV">
+          <div class="preloader-dots"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+
+
+  <!-- block header %} -->
+  {% include 'header.html' %}
+  <!-- endblock %} -->
+
+  <main class="main bg-secondary">
+    
+    <!-- breadcrumb links  -->
+    <div class="section-box">
+      <div class="breadcrumbs-div mt-15 mb-15">
+        <div class="container">
+          <ul class="breadcrumb">
+            <li>
+              <a class="color-gray-1000 active text-primary" href="/" > 
+                <small style=" font-size: 12px; ">You Are Here : </small> 
+                <strong>Home</strong> 
+              </a>
+            </li>
+            {% block links %} {% endblock %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- end breadcrumb links  -->
+
+    <!-- message area -->
+    <div class="message-container">
+      {% for msg in messages %}
+      <div role="alert" class="alert alert-{{msg.tags}} alert-dismissible ">
+        <button type="button" class="btn-close no-border" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong>{{msg.tags|title}}!</strong> {{msg|safe}}
+      </div>
+      {% endfor %}
+
+    </div>
+    <!-- end of message area -->
+
+    {% block main %}
+    {% endblock %}
+
+  </main>
+
+
+  {% block footer %}
+  {% include 'footer.html' %}
+  {% endblock %}
+
+
+  <script src="{% static 'js/vendors/modernizr-3.6.0.min.js' %}"></script>
+  <script src="{% static 'js/vendors/jquery-3.6.0.min.js' %}"></script>
+  <script src="{% static 'js/vendors/jquery-migrate-3.3.0.min.js' %}"></script>
+  <script src="{% static 'js/vendors/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/vendors/waypoints.js' %}"></script>
+  <script src="{% static 'js/vendors/wow.js' %}"></script>
+  <script src="{% static 'js/vendors/magnific-popup.js' %}"></script>
+  <script src="{% static 'js/vendors/perfect-scrollbar.min.js' %}"></script>
+  <script src="{% static 'js/vendors/select2.min.js' %}"></script>
+  <script src="{% static 'js/vendors/isotope.js' %}"></script>
+  <script src="{% static 'js/vendors/scrollup.js' %}"></script>
+  <script src="{% static 'js/vendors/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'js/vendors/noUISlider.js' %}"></script>
+  <script src="{% static 'js/vendors/slider.js' %}"></script>
+  <!-- Count down-->
+  <script src="{% static 'js/vendors/counterup.js' %}"></script>
+  <script src="{% static 'js/vendors/jquery.countdown.min.js' %}"></script>
+  <!-- Count down-->
+  <script src="{% static 'js/vendors/jquery.elevatezoom.js' %}"></script>
+  <script src="{% static 'js/vendors/slick.js' %}"></script>
+  <script src="{% static 'js/main.js' %}?v=3.0.0"></script>
+  <script src="{% static 'js/shop.js' %}?v=1.2.1"></script>
+  <script src="{% static 'js/custom_main.js' %}"></script>
+
+  {% block script %}
+  {% endblock %}
+</body>
+
+</html>

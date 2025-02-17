@@ -1,0 +1,325 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+<!-- Top  -->
+
+<section class="section-box ">
+  <div class="container">
+    <div class="head-main border-none m-0">
+      <div class="row">
+        <div class="col-xl-5 col-lg-6 ">
+
+        </div>
+        <div class="col-xl-7 col-lg-6 ">
+          <h3 class="mb-20 mt-20 " style="left:-90px; position: relative; color: #4e4e4e">Meet Our Top 10 Vendors!</h3>
+        </div>
+      </div>
+    </div>
+    <div class="list-products-5">
+
+      {% for vendor in vendors %}
+      <div class="card-grid-style-3 px-2">
+        <div class="card-grid-inner p-0 border-none bg-none">
+          <div class="image-box">
+            <a href="/" style="display: block; border-radius: 10px 10px 0 0;">
+              <img src="{{vendor.logo.url}}" alt="IB2BV"></a>
+          </div>
+          <div class="text-center px-3">
+            <a class="color-brand-3 font-md-bold" href="">{{vendor.name}}.</a>
+            <br>
+            <a class="font-xs color-gray-500 d-none" href=""></a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+<!-- End of Top -->
+
+
+<!-- Why choose us -->
+<section class="section-box mt-70 mb-50">
+  <div class="container">
+    <div class="head-main text-center mb-10 border-none">
+      <h3 class="mb-5 text-dark">WHY US</h3>
+      <p class="font-base color-gray-500">Here is why our clients choose us!</p>
+    </div>
+  </div>
+  <div class="container mt-10">
+    <div class="box-swiper">
+      <div class="swiper-container swiper-group-4">
+        <div class="swiper-wrapper py-5">
+          {% for item in whyus %}
+          <div class="swiper-slide">
+            <div class="item-list">
+              <div class="icon-left"><img src="{{item.icon.url}}" alt="IB2BV"></div>
+              <div class="info-right">
+                <h5 class="font-lg-bold color-gray-100 text-dark">{{item.title}}</h5>
+                <p class="font-sm color-gray-500">{{item.content}}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End of why choose us -->
+
+<!-- List of Vendors -->
+<div class="section-box mt-70">
+  <div class="container" style="max-width: 90%;">
+    <div class="box-filters mt-0 pb-5 mb-10">
+      <div class="row" style="border-bottom: 1px solid #D5DFE4;">
+
+
+        <div class="col-xl-4 col-md-5 mb-10 text-md-start text-center ">
+          <a class="btn btn-filter font-sm color-brand-3 font-medium " href="#ModalFiltersForm"
+            data-bs-toggle="modal">All Filters</a>
+
+          <select class=" select2-container ml-20 py-2 px-2 border-none bg-primary text-white rounded"
+           onchange="filterVendors(this.value)">
+            <option class="">All categories</option>
+            {% for cat in vendor_cats %}
+            <option value="{{cat.name}}">{{cat.name}}</option>
+            {% endfor %}
+          </select>
+
+        </div>
+
+        <div class="col-xl-8 col-md-7 mb-10 text-md-end text-center">
+
+          <span class="d-inline-block font-md border-1-right span ">Showing 1&ndash;16 of 17 </span>
+
+          <div class="d-inline-block"><span class="font-md color-gray-500 ">Show</span>
+            <div class="dropdown dropdown-sort border-1-right text-primary">
+              <button class="btn dropdown-toggle font-md " id="dropdownSort2" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false" data-bs-display="static">
+                <span class="text-primary">30 items</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-light " aria-labelledby="dropdownSort2">
+                <li><a class="dropdown-item active" href="#">30 items</a></li>
+                <li><a class="dropdown-item" href="#">50 items</a></li>
+                <li><a class="dropdown-item" href="#">100 items</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="d-inline-block"><span class="font-sm color-gray-500 font-medium ">Sort by:</span>
+            <div class="dropdown dropdown-sort border-1-right">
+              <button class="btn dropdown-toggle font-sm color-gray-900 font-medium " id="dropdownSort" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false">Latest products</button>
+              <ul class="dropdown-menu dropdown-menu-light " aria-labelledby="dropdownSort" style="margin: 0px;">
+                <li><a class="dropdown-item active" href="#">Latest products</a></li>
+                <li><a class="dropdown-item" href="#">Oldest products</a></li>
+                <li><a class="dropdown-item" href="#">Comments products</a></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<section class="section-box mt-10 mb-20">
+  <div class="container">
+
+    <div class="mt-10 mb-10">
+      <ul class="list-9-col">
+        {% for vendor in vendors %}
+        <li class="vendor-item {{vendor.category}}">
+          <div class="box-category hover-up ">
+            <a href="">
+              <div class="image"><img src="{{vendor.logo.url}}" alt="Ibbv"></div>
+            </a>
+            <div class="text-info">
+              <a class="font-sm color-gray-900 font-bold" href="">{{vendor.name}}</a>
+            </div>
+          </div>
+        </li>
+        {% endfor %}
+
+      </ul>
+    </div>
+
+    <nav class="right">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link page-prev" ></a></li>
+        <li class="page-item"><a class="page-link active" >1</a></li>
+        <li class="page-item"><a class="page-link page-next" ></a></li>      
+      </ul>
+    </nav>
+  </div>
+</section>
+<!-- End of List of Vendors -->
+
+<!-- News Slider -->
+
+<section class="section-box mt-10 mb-50">
+  <div class="container">
+    <div class="head-main ">
+      <h3 class="mb-5 text-dark">Latest News</h3>
+      <p class="font-base color-gray-500">Get updates about latest activities!</p>
+    </div>
+  </div>
+
+  <div class="container box-slider-item">
+    <div class="content-slider">
+      <div class="box-swiper">
+        <div class="swiper-button-next swiper-button-next-style-2 swiper-button-next-bestseller"></div>
+        <div class="swiper-button-prev swiper-button-prev-style-2 swiper-button-prev-bestseller"></div>
+
+        <div class="swiper-container swiper-best-seller">
+          <div class="swiper-wrapper pt-5">
+
+            {% for item in news %}
+            <div class="swiper-slide">
+              <div class="col-12 display-list display-list-2">
+                <div class="card-grid-style-1">
+                  <div class="image-box">
+                    <a href="/">
+                      {% for img in item.images.all %}
+                      <img src="{{img.file.url}}" alt="Ibbv">
+                      {% endfor %}
+                    </a>
+                  </div>
+                  <div class="blog-info">
+                    {% for tag in item.tags.all %}
+                    <a class="tag-dot font-xs" href="/">
+                    {{tag}}
+                    </a>
+                    {% endfor %}
+                    <a class="color-gray-1100" href="/">
+                      <h4 class="mb-15">{{item.title}} </h4>
+                    </a>
+                    <p class="font-md color-gray-500 min-height-135">{{item.content}}</p>
+                    <div class="row mt-20">
+                      <div class="col-8"><span class="color-gray-500 font-sm mr-30">{{item.publication_date}}</span>
+                      </div>
+                      <div class="col-4 text-end"><a class="btn btn-arrow-2 btn-arrow-2-reverse">Read more</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End of News Slider -->
+
+
+<div class="modal fade" id="ModalFiltersForm" tabindex="-1" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content apply-job-form">
+      <div class="modal-header">
+        <h5 class="modal-title color-gray-1000 filters-icon">Advance Filters</h5>
+        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-30">
+        <div class="row">
+          <div class="col-w-1">
+            <h6 class="color-gray-900 mb-0">Category</h6>
+            <ul class="list-checkbox">
+              {% for cat in vendor_cats %}
+              <li>
+                <label class="cb-container">
+                  <input type="checkbox" {% if forloop.counter == 1 %} checked="checked" {% endif %}><span
+                    class="text-small">{{cat}}</span><span class="checkmark"></span>
+                </label>
+              </li>
+              {% endfor %}
+
+            </ul>
+          </div>
+
+          <!-- Filter by tags -->
+          <div class="col-w-2">
+            <h6 class="color-gray-900 mb-20 mt-40">Tags</h6>
+            <div><a class="btn btn-border mr-5" href="#">Games</a><a class="btn btn-border mr-5"
+                href="#">Electronics</a><a class="btn btn-border mr-5" href="#">Video</a><a class="btn btn-border mr-5"
+                href="#">Cellphone</a><a class="btn btn-border mr-5" href="#">Indoor</a><a class="btn btn-border mr-5"
+                href="#">VGA Card</a><a class="btn btn-border mr-5" href="#">USB</a><a class="btn btn-border mr-5"
+                href="#">Lightning</a><a class="btn btn-border mr-5" href="#">Camera</a>
+            </div>
+          </div>
+
+          <div class="col-w-2">
+            <h6 class="color-gray-900 mb-0 mt-40">Rating</h6>
+            <ul class="list-checkbox">
+              <li class="mb-5"><a href="#"><img src="{% static 'imgs/template/icons/star.svg' %}" alt="IB2BV"><img
+                    src="{% static 'imgs/template/icons/star.svg' %}" alt="IB2BV"><img
+                    src="{% static 'imgs/template/icons/star.svg' %}" alt="IB2BV"><img
+                    src="{% static 'imgs/template/icons/star.svg' %}" alt="IB2BV"><img
+                    src="{% static 'imgs/template/icons/star.svg' %}" alt="IB2BV"><span
+                    class="ml-10 font-xs color-gray-500 d-none d-inline-block align-top">(5 stars)</span></a></li>
+              <li class="mb-5"><a href="#"><img src="{% static 'imgs/template/icons/star.svg' %}" alt="IB2BV"><img
+                    src="{% static 'imgs/template/icons/star.svg' %}" alt="IB2BV"><img
+                    src="{% static 'imgs/template/icons/star.svg' %}" alt="IB2BV"><img
+                    src="{% static 'imgs/template/icons/star.svg' %}" alt="IB2BV"><img
+                    src="{% static 'imgs/template/icons/star-gray.svg' %}" alt="IB2BV"><span
+                    class="ml-10 font-xs color-gray-500 d-none d-inline-block align-top">(4 stars)</span></a></li>
+              <li class="mb-5"><a href="#"><img src="{% static 'imgs/template/icons/star.svg' %}" alt="IB2BV"><img
+                    src="{% static 'imgs/template/icons/star.svg' %}" alt="IB2BV"><img
+                    src="{% static 'imgs/template/icons/star.svg' %}" alt="IB2BV"><img
+                    src="{% static 'imgs/template/icons/star-gray.svg' %}" alt="IB2BV"><img
+                    src="{% static 'imgs/template/icons/star-gray.svg' %}" alt="IB2BV"><span
+                    class="ml-10 font-xs color-gray-500 d-none d-inline-block align-top">(3 stars)</span></a></li>
+              <li class="mb-5"><a href="#"><img src="{% static 'imgs/template/icons/star.svg' %}" alt="IB2BV"><img
+                    src="{% static 'imgs/template/icons/star.svg' %}" alt="IB2BV"><img
+                    src="{% static 'imgs/template/icons/star-gray.svg' %}" alt="IB2BV"><img
+                    src="{% static 'imgs/template/icons/star-gray.svg' %}" alt="IB2BV"><img
+                    src="{% static 'imgs/template/icons/star-gray.svg' %}" alt="IB2BV"><span
+                    class="ml-10 font-xs color-gray-500 d-none d-inline-block align-top">(2 stars)</span></a></li>
+              <li class="mb-5"><a href="#"><img src="{% static 'imgs/template/icons/star.svg' %}" alt="IB2BV"><img
+                    src="{% static 'imgs/template/icons/star-gray.svg' %}" alt="IB2BV"><img
+                    src="{% static 'imgs/template/icons/star-gray.svg' %}" alt="IB2BV"><img
+                    src="{% static 'imgs/template/icons/star-gray.svg' %}" alt="IB2BV"><img
+                    src="{% static 'imgs/template/icons/star-gray.svg' %}" alt="IB2BV"><span
+                    class="ml-10 font-xs color-gray-500 d-none d-inline-block align-top">(1 star)</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-start pl-30"><a class="btn btn-buy w-auto" href="#">Apply Filter</a><a
+          class="btn font-sm-bold color-gray-500" href="#">Reset Filter</a></div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+  function filterVendors(filterTag=""){
+    // console.log("Select is ", category);
+    $('.vendor-item').each((i, item)=>{
+      if (filterTag == 'All categories' || item.className.includes(filterTag)){
+        $(item).css('display', 'block');
+      }
+      else{
+        $(item).css('display', 'none');
+      }
+      
+    })  
+    
+   
+  }
+  
+</script>
+{% endblock %}

@@ -1,0 +1,25 @@
+This folder is used to store configuration files.
+
+These files are used while developing or deploying your Django project, so mainly they are webserver configurations and other configs.
+
+Please note, for security reasons, you should not expose your webserver configuration to the
+public, It is highly recommend to NOT include your config files in VCS if your
+VCS is publicly accessible (i.e. via GitHub).
+
+1. Links to the social media sites, apps on the store and ios, an to contact us.
+2. Email configuration for automated responses.
+3. Configuration for the Database
+...
+...
+...
+N. other configuration
+
+Configs comes in three formats:
+1. text as config.config
+2. json as config.json
+3. yaml as config.yaml
+4. config as settings.ini
+
+
+
+

@@ -1,0 +1,10 @@
+This folder is used to store environment rebuild/reuse files, such as:
+1. python dependencies.
+2. docker files.
+3. others and sub-internal dependencies (For example, pipelines dependencies)
+
+
+
+
+
+
