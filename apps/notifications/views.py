@@ -56,7 +56,7 @@ class SubscriberCreate(APIView):
                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class SubscriberDetail(APIView):
-     def get_by_pk(self, request, pk):
+     def get_by_pk(self, pk):
           try:
                return Subscriber.objects.get(pk=pk)
           except:
@@ -194,7 +194,7 @@ class NewsletterSentCreate(APIView):
                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class NewsletterSentDetail(APIView):
-     def get_by_id(self, request, pk):
+     def get_by_id(self, pk):
           try:
                return NewsletterSent.objects.get(pk=pk)
           except:
@@ -236,7 +236,7 @@ class NewsTagCreate(APIView):
                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class NewsTagDetail(APIView):
-     def get_by_pk(self, request, pk):
+     def get_by_pk(self, pk):
           try:
                return NewsTag.objects.get(pk=pk)
           except:
@@ -280,7 +280,7 @@ class TagCategoryCreate(APIView):
                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class TagCategoryDetail(APIView):
-     def get_by_pk(self, request, pk):
+     def get_by_pk(self, pk):
           try:
                return TagCategory.objects.get(pk=pk)
           except:

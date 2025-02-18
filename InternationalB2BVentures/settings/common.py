@@ -52,7 +52,6 @@ DEFAULT_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tinymce',
     'cities_light',
     'corsheaders',
     'rest_framework',

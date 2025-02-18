@@ -13,6 +13,7 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
     path("accounts/", include("apps.accounts.urls"), ),
     path("notification/", include("apps.notifications.urls"), ),
+    path("vendor/", include("apps.vendor.urls"), ),
 
     # APIS
     path('api/vendor/', include('apps.vendor.api.urls')),

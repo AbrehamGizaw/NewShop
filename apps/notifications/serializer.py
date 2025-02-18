@@ -55,10 +55,11 @@ class SubscriberSerializer(serializers.ModelSerializer):
     
 
 class NewsletterSentSerializer(serializers.ModelSerializer):
-    subscriber = serializers.PrimaryKeyRelatedField(queryset = Subscriber.objects.all())
-    Newsletter = serializers.PrimaryKeyRelatedField(queryset = Newsletter.objects.all())
-    status = serializers.ChoiceField(choices=Status.get_status_choices(), default = Status.SENT.value)
+    subscriber = serializers.PrimaryKeyRelatedField(queryset=Subscriber.objects.all())
+    newsletter = serializers.PrimaryKeyRelatedField(queryset=Newsletter.objects.all())
+    status = serializers.ChoiceField(choices=Status.get_status_choices(), default=Status.SENT.value)
+
     class Meta:
         model = NewsletterSent
         fields = ['subscriber', 'newsletter', 'sent_date', 'status']
-
+        read_only_fields = ['sent_date']
