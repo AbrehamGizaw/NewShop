@@ -4,12 +4,12 @@ from vendor.views import VendorList, VendorCreate, VendorDetail, ImageCreate, Im
 
 app_name = "vendor"
 urlpatterns = [
-    path('vendorlist/', VendorList.as_view()),
-    path('vendorcreate/', VendorCreate.as_view()), 
-    path('vendordetail/<int:pk>', VendorDetail.as_view()),
     path('vendorcategorylist/', VendorCategoryList.as_view()),
     path('vendorcategorycreate/', VendorCategoryCreate.as_view()), 
     path('vendorcategorydetail/<int:pk>', VendorCategoryDetail.as_view()),
+    path('vendorlist/', VendorList.as_view()),
+    path('vendorcreate/', VendorCreate.as_view()), 
+    path('vendordetail/<int:pk>', VendorDetail.as_view()),
     path('vendorcontentlist/', VendorContentList.as_view()),
     path('vendorcontentcreate/', VendorContentCreate.as_view()), 
     path('vendorcontentdetail/<int:pk>', VendorContentDetail.as_view()),

@@ -16,22 +16,20 @@ class VendorCategorySerializer(serializers.ModelSerializer):
 
 
 class VendorSerializer(serializers.ModelSerializer):
-    category = serializers.PrimaryKeyRelatedField(queryset=VendorCategory.objects.all())
-    logo = serializers.PrimaryKeyRelatedField(queryset=Image.objects.all())
+    categories = serializers.PrimaryKeyRelatedField(queryset=VendorCategory.objects.all(), many=True)
+    
+    logo = serializers.ImageField()
 
     class Meta:
         model = Vendor
         fields = [
-            'id', 'name', 'content', 'logo', 'category', 'is_live', 'is_top',
+            'id', 'name', 'content', 'logo', 'categories', 'is_live', 'is_top', 
             'publication_date', 'created_at', 'updated_at', 'removed_at'
         ]
         read_only_fields = ['created_at', 'updated_at', 'removed_at']
 
 
 class VendorAddressSerializer(serializers.ModelSerializer):
-    country = serializers.PrimaryKeyRelatedField(queryset=Country.objects.all())
-    state = serializers.PrimaryKeyRelatedField(queryset=Region.objects.all())
-
     class Meta:
         model = VendorAddress
         fields = [
@@ -53,8 +51,7 @@ class VendorSocialMediaSerializer(serializers.ModelSerializer):
 
 
 class VendorContentSerializer(serializers.ModelSerializer):
-    vendor = serializers.PrimaryKeyRelatedField(queryset=Vendor.objects.all())
-    icon = serializers.PrimaryKeyRelatedField(queryset=Image.objects.all())
+    vendor = serializers.PrimaryKeyRelatedField(queryset=Vendor.objects.all(), many = False)
 
     class Meta:
         model = VendorContent
@@ -64,8 +61,6 @@ class VendorContentSerializer(serializers.ModelSerializer):
 
 class VendorWhySerializer(serializers.ModelSerializer):
     vendor = serializers.PrimaryKeyRelatedField(queryset=Vendor.objects.all())
-    icon = serializers.PrimaryKeyRelatedField(queryset=Image.objects.all())
-
     class Meta:
         model = VendorWhy
         fields = ['id', 'vendor', 'header', 'content', 'icon', 'created_at', 'updated_at', 'removed_at']

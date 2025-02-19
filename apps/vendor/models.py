@@ -44,7 +44,7 @@ class Vendor(BaseModel):
     name = models.CharField(max_length=255, unique=True, blank=True, null=False, )
     content = HTMLField()
     logo = models.ImageField(upload_to="vendor/mainimages", blank=False,)
-    category = models.ForeignKey(VendorCategory, on_delete=models.SET_NULL, blank=False, null=True, )
+    categories = models.ManyToManyField(VendorCategory)
     is_live = models.BooleanField(default=False)
     is_top = models.BooleanField(default=False, help_text="Marked as top vendor!")
     publication_date = models.DateTimeField(auto_now_add=True, null=False)
